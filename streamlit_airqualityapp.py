@@ -276,6 +276,29 @@ else:
 # -----------------------------
 st.header("4) Glossary (Key Terms)")
 
+
+
+# CSS styling light/dark mode uchun
+st.markdown(
+    """
+    <style>
+    /* Text rangini light va dark mode uchun */
+    .glossary-item {
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    [data-theme="light"] .glossary-item {
+        color: black;
+    }
+    [data-theme="dark"] .glossary-item {
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Glossary items
 glossary_items = {
     "🌫 PM2.5": "Tiny dust particles that can harm lungs.",
     "💧 Humidity (%)": "Amount of water vapor in the air.",
@@ -285,8 +308,10 @@ glossary_items = {
     "☁️ Cloud cover (%)": "How much of the sky is covered by clouds."
 }
 
-for icon, desc in glossary_items.items():
-    st.markdown(f"<div style='background:#f8f9fa;padding:10px;border-radius:8px;margin-bottom:5px;'><b>{icon}</b> {desc}</div>", unsafe_allow_html=True)
+# Chiqarish
+for key, value in glossary_items.items():
+    st.markdown(f"<div class='glossary-item'><b>{key}</b>: {value}</div>", unsafe_allow_html=True)
+
 
 st.markdown("---")
 st.caption("Built for Uzbekistan (Central Asia) — PM2.5 + weather forecasting & storm warnings.")
